@@ -1,0 +1,1 @@
+INSECURE_EXT = ['exe', 'bat', '.vbs', '.vbe']
