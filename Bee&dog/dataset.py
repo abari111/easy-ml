@@ -1,5 +1,4 @@
 import os
-os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 import matplotlib.pyplot as plt
 import cv2 as cv
 import torch
@@ -10,14 +9,16 @@ from torch.utils.data import(
 import pandas as pd
 from PIL import Image
 
+os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
-labels = {0: 'bee', 1: 'dog'}
+LABELS = {0: 'bee', 1: 'dog'}
 
 def get_csv(path, animals=None):
     annotations = {'path': [], 'label': []}
     labels = {}
     targets_dirs = animals if animals else os.listdir(path)
     index = 0
+
     for dir in targets_dirs:
         files_names  = os.listdir(os.path.join(path, dir))
         labels[index] = dir
@@ -26,9 +27,11 @@ def get_csv(path, animals=None):
             annotations['label'].append(index)
         index+=1
     annotations = pd.DataFrame(annotations)
+
     return annotations.to_csv('annot.csv'), labels
 
 class AnimalDataset(Dataset):
+
     def __init__(self, path, annotations, transforms=None):
         self.path = path 
         self.annotations = pd.read_csv(annotations)

@@ -32,13 +32,11 @@ class RetModel(nn.Module):
         self.fc2 = nn.Linear(128, 10)
         self.soft_act = nn.Softmax(dim=0)
 
-
     def forward(self, x):
-        # Forward pass through the network
+        
         x = self.pool1(self.relu1(self.conv1(x)))
         x = self.pool2(self.relu2(self.conv2(x)))
         x = torch.flatten(x, 1)
-        print(x.shape)
         x = self.relu3(self.fc1(x))
         x = self.fc2(x)
         y = self.soft_act(x) 
@@ -46,6 +44,7 @@ class RetModel(nn.Module):
 
 
 class Net(nn.Module):
+    
     def __init__(self):
         super().__init__()
         self.conv1 = nn.Conv2d(3, 6, 5)
@@ -86,7 +85,6 @@ if __name__=="__main__":
     data = torch.randn(size=(3, 256, 256))
     # print(data)
     model = Net()
-    print(model(data))
     # soft_output = nn.Softmax(dim=0)
     # print(soft_output(data))  
     # print(model)

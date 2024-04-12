@@ -5,7 +5,7 @@ import torch
 
 st.title("Bee&Dog")
 
-upload = st.file_uploader("Chargez l'image de votre objet",
+upload = st.file_uploader("Upload animal Image",
                            type=['png', 'jpeg', 'jpg'])
 
 c1, c2 = st.columns(2)

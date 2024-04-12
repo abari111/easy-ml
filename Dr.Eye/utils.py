@@ -37,6 +37,7 @@ class RetDataset(Dataset):
 class CleanRetDataset(RetDataset):
     def __init__(self,*,  data_path=None, annot_file_path=None,  transforms=None, dataset=None):
         self.flag = None
+
         if data_path and annot_file_path:
             super().__init__(data_path, annot_file_path)
             self.flag = True
@@ -61,9 +62,11 @@ class CleanRetDataset(RetDataset):
 
     def __get_dataset_1(self, index) -> tuple:
         sample, label = super().__getitem__(index)
+
         sample = sample.resize(size=(256, 256))
         sample = self.__transforms(sample)
         label = torch.tensor([label])
+
         return sample, label
     
     def __get_dataset_2(self, index) ->tuple:
@@ -101,6 +104,7 @@ def train(model, dataloader, criterion, optimizer, num_epoch=10, device="cpu"):
 def display_dataset(dataset, k=6):
     fig, axes = plt.subplots(2, 3)
     images_idx = random.choices(range(len(dataset)), k=k)
+
     i = 0
     j = 0
     for image_idx in images_idx:
@@ -113,8 +117,6 @@ def display_dataset(dataset, k=6):
             j = 0
             i += 1
 
-        
-    
     plt.tight_layout()
     plt.show()
 
@@ -132,6 +134,7 @@ if __name__=="__main__":
             torchvision.transforms.ToTensor()
         ]
     )
+    
     dataset = RetDataset(data_path="datasets/ret_dataset", annot_file_path="datasets/ret_annot.csv")
     cleaned_dataset = CleanRetDataset(transforms=ret_transforms,dataset=dataset)
     serialize_data(dataset)

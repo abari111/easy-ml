@@ -1,6 +1,7 @@
 import streamlit as st
 from open_api import get_hourly_data
 from utils import get_location
+
 params = {
 	"latitude": 48.8534,
 	"longitude": 2.3488,
@@ -19,6 +20,7 @@ st.title("Mr.Weather")
 
 city = st.text_input('City', 'Paris')
 btn = st.button('Fetch')
+
 if btn:
     geo_coord = get_location(city)
     params['latitude'] = float(geo_coord.lat)

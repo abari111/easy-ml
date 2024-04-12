@@ -10,7 +10,6 @@ def get_location(address:str='Paris') ->NamedTuple:
     
     return GeoCoord(location.latitude, location.longitude)
 
-
 if __name__=='__main__':
     geo_coord = get_location(address='Paris')
     print(geo_coord.lat, geo_coord.lon)

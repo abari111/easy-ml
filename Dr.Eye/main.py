@@ -17,12 +17,14 @@ dataset = RetDataset(
 processed_dataset = CleanRetDataset(dataset=dataset, transforms=ret_transforms)
 
 display_dataset(dataset)
+
 # Models
 model = torchvision.models.resnet50(weights="IMAGENET1K_V1")
 model.fc = torch.nn.Linear(in_features=2048, out_features=5)
 
 for params in list(model.parameters())[:-1]:
     params.trainable = False
+
 # Hyperparameters
 lr = 1e-3
 batch_size = 34
@@ -46,6 +48,7 @@ for epoch in range(num_epoch):
         optimizer.step()
     
     print(f"epoch={epoch:.2f} --------------- loss={sum(losses)/len(losses)}")
+    
 # Testing
 
 # if __name__=="__main__":
