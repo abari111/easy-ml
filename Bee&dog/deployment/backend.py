@@ -15,8 +15,8 @@ app = Flask(__name__)
 
 
 @app.route("/", methods=["GET"])
-def hello():
-    return jsonify({"hello": "ok"})
+def home():
+    return jsonify({"Greetings": "Hello"})
 
 model = load()
 

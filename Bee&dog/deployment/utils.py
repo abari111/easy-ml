@@ -1,7 +1,7 @@
 import torch
 from torchvision import transforms
 
-# Processing image
+# Processing pipeline
 def preprocess(image):
     image = image.resize((256, 256))
     transform = transforms.ToTensor()
