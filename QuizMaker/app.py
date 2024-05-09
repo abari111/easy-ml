@@ -39,6 +39,7 @@ if 'user_ans' not in st.session_state:
     st.session_state.user_ans = []
 
 i = 0
+
 if 'quiz' in st.session_state:
     quiz = st.session_state.quiz
     for key in quiz.keys():

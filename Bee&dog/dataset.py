@@ -1,13 +1,15 @@
 import os
+
 import matplotlib.pyplot as plt
 import cv2 as cv
+import pandas as pd
+from PIL import Image
 import torch
 from torch.utils.data import(
     Dataset,
     DataLoader,
 )
-import pandas as pd
-from PIL import Image
+
 
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
@@ -52,8 +54,8 @@ class AnimalDataset(Dataset):
 if __name__ == "__main__":
     annotations, labels= get_csv("dataset/", ['bee', 'dog'])
     annotations = pd.read_csv('annot.csv')
-    print(labels)
     dataset = AnimalDataset('dataset', 'annot.csv') 
+    
     ax = plt.imshow(dataset[100][0])
     plt.title(labels[dataset[100][1].item()])
     plt.show()
