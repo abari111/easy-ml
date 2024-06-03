@@ -1,6 +1,8 @@
-from typing import Set, Dict
 import os
+from typing import Set, Dict
 from pathlib import Path
+
+
 from magika import Magika 
 
 INSECURE_EXT = ['exe', 'bat', '.vbs', '.vbe', 'pebin']

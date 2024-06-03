@@ -1,22 +1,22 @@
-import torch 
-from PIL import Image
-from torchvision import transforms
 import os
+
+import torch 
+from torchvision import transforms
+from PIL import Image
+
 
 dogs_images = os.listdir('dataset/dog')
 labels = {0: 'bee', 1: 'dog'}
 
-# Dataset
+
 for file_img in dogs_images:
-    #img_path = f'dataset/dog/{file_img}'
     img_path = "bee.jpeg"
     image = Image.open(img_path)
     
     image = image.resize((256, 256))
     transform = transforms.ToTensor()
     image = transform(image)
-    #print(image.unsqueeze(0).shape)
-    # Model
+    
     model = torch.load('../models/model.pht')
     model.eval()
     

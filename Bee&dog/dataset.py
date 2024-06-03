@@ -59,6 +59,3 @@ if __name__ == "__main__":
     ax = plt.imshow(dataset[100][0])
     plt.title(labels[dataset[100][1].item()])
     plt.show()
-    # cv.imshow(str(labels[dataset[100][1].item()]), dataset[100][0])
-    # cv.waitKey(0)
-    # print(dataset[0][1].item())

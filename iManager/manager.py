@@ -1,8 +1,10 @@
-from magika import Magika 
+
 import os
 from pathlib import Path
 from typing import Set, Dict
+
 from utils import check_files_ext
+from magika import Magika 
 
 CFG = {
     'png': 'Photos',
