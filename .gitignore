@@ -1,6 +1,7 @@
 datasets
 .env
 **/__pycache__/
+!**/__pycache__/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
